@@ -26,8 +26,7 @@ command_not_found_handle () {
         "ERROR_INCOMPETENT_USER"
         "Incompetence is also a form of competence"
         "Bad."
-        "Fake it till you make it!"
-        "What is this...? Amateur hour!?"
+        "Fake it till you make it!" "What is this...? Amateur hour!?"
         "Come on! You can do it!"
         "Nice try."
         "What if... you type an actual command the next time!"
@@ -74,11 +73,11 @@ command_not_found_handle () {
     # Seed "random" generator
     RANDOM=$(date +%s%N)
 
-    # Only print the insults some of the time
+    # Only print the insults some of the time (REMOVED)
     selection=$((${RANDOM}%2))
-    if [[ ${selection} -lt 1 ]]; then
-        printf "\n  $(tput bold)$(tput setaf 1)$(shuf -n 1 -e "${insults[@]}")$(tput sgr0)\n\n"
-    fi
+    # echo "${selection}"
+    printf "\n  $(shuf -n 1 -e "${insults[@]}")\n"
+    printf "\n  $(tput bold)$(tput setaf 1)$(shuf -n 1 -e "${insults[@]}")$(tput sgr0)\n\n"
 
     # Return the standard exit code normally returned on invalid command
     echo "command not found: $1"
